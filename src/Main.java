@@ -12,7 +12,11 @@ public class Main {
 
         PrintingService printingService = new PrintingServiceImp();
         RateCalculationService rateCalculationService = new RateCalculationServiceImpl();
-        MortgageCalculationService mortgageCalculationService = new MortgageCalculationServiceImpl(printingService, rateCalculationService);
+
+        MortgageCalculationService mortgageCalculationService = new MortgageCalculationServiceImpl(
+                printingService,
+                rateCalculationService
+        );
         mortgageCalculationService.calculate(inputData);
     }
 }
