@@ -8,15 +8,20 @@ public class Main {
 
         InputData inputData = new InputData()
             .withAmount(new BigDecimal(99000))
-                .withMonthsDuration(BigDecimal.valueOf(160));
+            .withMonthsDuration(BigDecimal.valueOf(160));
+
 
         PrintingService printingService = new PrintingServiceImp();
-        RateCalculationService rateCalculationService = new RateCalculationServiceImpl();
+        RateCalculationService rateCalculationService = new RateCalculationServiceImpl(
+                new timePointServiceImpl(),
+                new AmountsCalculationServiceImpl(),
+                new ResidualCalculationServiceImpl());
 
         MortgageCalculationService mortgageCalculationService = new MortgageCalculationServiceImpl(
                 printingService,
                 rateCalculationService
         );
+
         mortgageCalculationService.calculate(inputData);
     }
 }
