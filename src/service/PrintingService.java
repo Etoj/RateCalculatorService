@@ -1,6 +1,9 @@
 package service;
 
 import model.InputData;
+import model.Rate;
+
+import java.util.List;
 
 public interface PrintingService {
 
@@ -12,9 +15,10 @@ public interface PrintingService {
     String MONTHS = "MIESIECY: ";
     String RATE = "RATA: ";
 
-    String INTEREST = "OPROCENTOWANIE: ";
+    String INTEREST = "ODSETKI: ";
     String CAPITAL = "KAPITAL: ";
-    String LEFT = "POZOSTALO: ";
+    String LEFT_AMOUNT = "POZOSTALO KWOTA: ";
+    String LEFT_MONTHS = "POZOSTALO MIESIECY: ";
     String MORTGAGE_AMOUNT = "KWOTA KREDYTU: ";
     String MORTGAGE_PERIOD = "OKRES KREDYTOWANIA: ";
 
@@ -24,4 +28,5 @@ public interface PrintingService {
     String PERCENT = "% ";
 
     public void printInputDataInfo(final InputData inputData);
+    void printRates(List<Rate> rates);
 }
