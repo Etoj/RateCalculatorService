@@ -3,6 +3,7 @@ package model;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.Map;
 
 public class InputData {
 
@@ -18,6 +19,38 @@ public class InputData {
 
     private BigDecimal bankMarginPercent = new BigDecimal("1.93");
     private BigDecimal bankMargin = new BigDecimal("1.8");//not used
+
+    private Map<Integer, BigDecimal> overpaymentSchema = Map.of(
+            5, BigDecimal.valueOf(10000),
+            6, BigDecimal.valueOf(10000),
+            7, BigDecimal.valueOf(10000),
+            8, BigDecimal.valueOf(10000)
+    );
+
+    private String oberpaymentReduceWay = Overpayment.REDUCE_PERIOD;
+    private BigDecimal overpaymentProvisionPercent = BigDecimal.valueOf(3);
+    private BigDecimal overpaymentProvisionMonths = BigDecimal.valueOf(36);
+
+
+    public InputData withOverpaymentSchema(Map<Integer, BigDecimal> overpaymentSchema) {
+        this.overpaymentSchema = overpaymentSchema;
+        return this;
+    }
+
+    public InputData withOberpaymentReduceWay(String oberpaymentReduceWay) {
+        this.oberpaymentReduceWay = oberpaymentReduceWay;
+        return this;
+    }
+
+    public InputData withOverpaymentProvisionPercent(BigDecimal overpaymentProvisionPercent) {
+        this.overpaymentProvisionPercent = overpaymentProvisionPercent;
+        return this;
+    }
+
+    public InputData withOverpaymentProvisionMonths(BigDecimal overpaymentProvisionMonths) {
+        this.overpaymentProvisionMonths = overpaymentProvisionMonths;
+        return this;
+    }
 
 
     public InputData withRepaymentStartDate(LocalDate repaymentStartDate) {
@@ -81,5 +114,21 @@ public class InputData {
 
     public BigDecimal getInterestDisplay() {
         return wiborPercent.add(bankMarginPercent).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public Map<Integer, BigDecimal> getOverpaymentSchema() {
+        return overpaymentSchema;
+    }
+
+    public String getOverpaymentReduceWay() {
+        return oberpaymentReduceWay;
+    }
+
+    public BigDecimal getOverpaymentProvisionPercent() {
+        return overpaymentProvisionPercent.divide(PERCENT, 20, RoundingMode.HALF_UP);
+    }
+
+    public BigDecimal getOverpaymentProvisionMonths() {
+        return overpaymentProvisionMonths;
     }
 }

@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class timePointServiceImpl implements TimePointService {
+public class TimePointServiceImpl implements TimePointService {
     private static final BigDecimal YEAR = BigDecimal.valueOf(12);
 
     @Override

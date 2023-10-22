@@ -2,12 +2,21 @@ package service;
 
 import model.InputData;
 import model.Rate;
+import model.Summary;
 
 import java.util.List;
 
 public interface PrintingService {
 
     String INTEREST_SUM = "SUMA ODSETEK";
+    String OVERPAYMENT_PROVISION = "PROWIZJA ZA NADPLATY: ";
+    String LOSTS_SUM ="SUMA STRAT: ";
+
+    String OVERPAYMENT_REDUCE_RATE = "NADPLATA ZMNIEJSZENIE RATY";
+    String OVERPAYMENT_REDUCE_PERIOD = "NADPLATA SKROCENIE OKRSU";
+    String OVERPAYMENT_FREQUENCY = "SCHEMAT DOKONYWANIA NADPLAT: ";
+
+
     String RATE_NUMBER = "NR: ";
     String YEAR = "ROK: ";
     String MONTH = "MIESIAC: ";
@@ -17,6 +26,7 @@ public interface PrintingService {
 
     String INTEREST = "ODSETKI: ";
     String CAPITAL = "KAPITAL: ";
+    String OVERPAYMENT = "NADPLATA:  ";
     String LEFT_AMOUNT = "POZOSTALO KWOTA: ";
     String LEFT_MONTHS = "POZOSTALO MIESIECY: ";
     String MORTGAGE_AMOUNT = "KWOTA KREDYTU: ";
@@ -29,4 +39,6 @@ public interface PrintingService {
 
     public void printInputDataInfo(final InputData inputData);
     void printRates(List<Rate> rates);
+
+    void printSummary(Summary summary);
 }
